@@ -14,11 +14,20 @@ module GoogleDrive
         def initialize(code, body, method, url) #:nodoc:#
           @code = code
           @body = body
-          super("Response code %s for %s %s: %s" % [code, method, url, CGI.unescapeHTML(body)])
+          @method = method
+          @url = url
+          not_vaild?
         end
 
         attr_reader(:code, :body)
 
+        def not_vaild?
+          true 
+        end
+
+        def error
+          super("Response code %s for %s %s: %s" % [@code, @method, @url, CGI.unescapeHTML(@body)])
+        end
+
     end
-    
 end
