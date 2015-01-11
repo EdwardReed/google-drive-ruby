@@ -16,7 +16,7 @@ module GoogleDrive
           @body = body
           @method = method
           @url = url
-          not_vaild?
+          error
         end
 
         attr_reader(:code, :body)
